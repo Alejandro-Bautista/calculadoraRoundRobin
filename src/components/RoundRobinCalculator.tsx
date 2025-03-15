@@ -437,6 +437,9 @@ export const RoundRobinCalculator = () => {
           </div>
         </div>
       </div>
+      <footer className="text-center py-4 text-gray-600 mt-8">
+        Hecho por: <span className="font-medium">Alejandro Bautista</span>
+      </footer>
     </div>
   );
 }; 
