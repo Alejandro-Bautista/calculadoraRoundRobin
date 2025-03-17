@@ -285,60 +285,64 @@ export const RoundRobinCalculator = () => {
           <div>
             <h2 className="text-lg font-semibold mb-4 text-gray-800">Equipos</h2>
             {teams.map((team) => (
-              <div key={team.id} className="flex gap-4 mb-4">
-                <input
-                  type="text"
-                  value={team.name}
-                  onChange={(e) => handleTeamChange(team.id, 'name', e.target.value)}
-                  className="flex-1 p-2 border rounded bg-white/50 backdrop-blur-sm"
-                  placeholder="Nombre del equipo"
-                />
-                <input
-                  type="number"
-                  value={team.odds}
-                  onChange={(e) => handleTeamChange(team.id, 'odds', e.target.value)}
-                  className="w-24 p-2 border rounded bg-white/50 backdrop-blur-sm"
-                  placeholder="Cuota"
-                />
-                <div className="flex gap-2">
-                  <button
-                    onClick={() => handleTeamChange(team.id, 'status', 'win')}
-                    className={`px-3 py-1 rounded ${
-                      team.status === 'win' 
-                        ? 'bg-green-500 text-white' 
-                        : 'bg-gray-200'
-                    }`}
-                  >
-                    G
-                  </button>
-                  <button
-                    onClick={() => handleTeamChange(team.id, 'status', 'draw')}
-                    className={`px-3 py-1 rounded ${
-                      team.status === 'draw' 
-                        ? 'bg-yellow-500 text-white' 
-                        : 'bg-gray-200'
-                    }`}
-                  >
-                    E
-                  </button>
-                  <button
-                    onClick={() => handleTeamChange(team.id, 'status', 'lose')}
-                    className={`px-3 py-1 rounded ${
-                      team.status === 'lose' 
-                        ? 'bg-red-500 text-white' 
-                        : 'bg-gray-200'
-                    }`}
-                  >
-                    P
-                  </button>
-                  {teams.length > 3 && (
+              <div key={team.id} className="mb-4">
+                <div className="flex flex-col min-[500px]:flex-row gap-4">
+                  <div className="flex flex-1 gap-4">
+                    <input
+                      type="text"
+                      value={team.name}
+                      onChange={(e) => handleTeamChange(team.id, 'name', e.target.value)}
+                      className="flex-1 p-2 border rounded bg-white/50 backdrop-blur-sm"
+                      placeholder="Nombre del equipo"
+                    />
+                    <input
+                      type="number"
+                      value={team.odds}
+                      onChange={(e) => handleTeamChange(team.id, 'odds', e.target.value)}
+                      className="w-24 p-2 border rounded bg-white/50 backdrop-blur-sm"
+                      placeholder="Cuota"
+                    />
+                  </div>
+                  <div className="flex gap-2 min-[500px]:mt-0 mt-2">
                     <button
-                      onClick={() => handleDeleteTeam(team.id)}
-                      className="px-3 py-1 rounded bg-red-500 text-white"
+                      onClick={() => handleTeamChange(team.id, 'status', 'win')}
+                      className={`px-3 py-1 rounded w-14 ${
+                        team.status === 'win' 
+                          ? 'bg-green-500 text-white' 
+                          : 'bg-gray-200'
+                      }`}
                     >
-                      X
+                      G
                     </button>
-                  )}
+                    <button
+                      onClick={() => handleTeamChange(team.id, 'status', 'draw')}
+                      className={`px-3 py-1 rounded w-14 ${
+                        team.status === 'draw' 
+                          ? 'bg-yellow-500 text-white' 
+                          : 'bg-gray-200'
+                      }`}
+                    >
+                      E
+                    </button>
+                    <button
+                      onClick={() => handleTeamChange(team.id, 'status', 'lose')}
+                      className={`px-3 py-1 rounded w-14 ${
+                        team.status === 'lose' 
+                          ? 'bg-red-500 text-white' 
+                          : 'bg-gray-200'
+                      }`}
+                    >
+                      P
+                    </button>
+                    {teams.length > 3 && (
+                      <button
+                        onClick={() => handleDeleteTeam(team.id)}
+                        className="px-3 py-1 rounded w-14 bg-red-500 text-white"
+                      >
+                        X
+                      </button>
+                    )}
+                  </div>
                 </div>
               </div>
             ))}
